@@ -11,15 +11,14 @@ class Game:
         pygame.init()
 
         # create a surface on screen that has the size of 800 x 600
-        self.screen = pygame.display.set_mode((c.SCREENRECT.width,c.SCREENRECT.height))
+        self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
         pygame.display.flip()
+        c.SCREENRECT.width, c.SCREENRECT.height = pygame.display.get_surface().get_size()
 
         # define a variable to control the main loop
         self.running = True
 
-    #############################
-    #       Main Game Loop      #
-    #############################
+
     def update(self, dt):
         # update keyboard state and mouse position
 
