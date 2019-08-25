@@ -4,6 +4,7 @@ import constants as c
 
 import global_vars as g
 
+import menu
 
 class Game:
     def __init__(self):
@@ -12,22 +13,24 @@ class Game:
 
         # create a surface on screen that has the size of 800 x 600
         self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-        pygame.display.flip()
-        c.SCREENRECT.width, c.SCREENRECT.height = pygame.display.get_surface().get_size()
 
+        pygame.display.flip()
+
+        c.SCREENRECT.width, c.SCREENRECT.height = pygame.display.get_surface().get_size()
+        self.menu = menu.Menu()
         # define a variable to control the main loop
         self.running = True
 
 
     def update(self, dt):
         # update keyboard state and mouse position
-
         g.KEYSTATE = pygame.key.get_pressed()
         g.MOUSEPOS = pygame.mouse.get_pos()
+        self.menu.update(dt)
 
     def draw(self):
         # Do all of the drawing
-
+        self.menu.draw(self.screen)
         # Tell pygame to show all the beautiful things we drew
         pygame.display.flip()
 
