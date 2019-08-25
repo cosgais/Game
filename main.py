@@ -4,6 +4,7 @@ import constants as c
 
 import global_vars as g
 
+
 class Game:
     def __init__(self):
         # initialize the pygame module
@@ -19,12 +20,13 @@ class Game:
     #############################
     #       Main Game Loop      #
     #############################
-    def Update(self, dt):
+    def update(self, dt):
         # update keyboard state and mouse position
+
         g.KEYSTATE = pygame.key.get_pressed()
         g.MOUSEPOS = pygame.mouse.get_pos()
 
-    def Draw(self):
+    def draw(self):
         # Do all of the drawing
 
         # Tell pygame to show all the beautiful things we drew
@@ -42,15 +44,15 @@ class Game:
                     # change the value to False, to exit the main loop
                     self.running = False
 
-            self.Update(clock.tick(c.FPS))
+            self.update(clock.tick(c.FPS))
             if g.KEYSTATE[pygame.K_ESCAPE]:
                 self.running = False
-            self.Draw()
+            self.draw()
 
 
 # run the main function only if this module is executed as the main script
 # (if you import this as a module then nothing is executed)
-if __name__=="__main__":
+if __name__ == "__main__":
     game = Game()
     # call the main function
     game.main()
